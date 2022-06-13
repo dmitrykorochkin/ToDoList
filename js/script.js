@@ -9,8 +9,9 @@ const todoButtonAdd = document.querySelector('.header-button');
 
 let toDoData = [];
 
-if (localStorage.getItem('userKey')) {
-    toDoData = JSON.parse(localStorage.getItem('userKey'));}
+if (localStorage.getItem('userKey')){
+    toDoData = JSON.parse(localStorage.getItem('userKey'));
+}
 
 
 const render = function() {
@@ -69,4 +70,6 @@ todoControl.addEventListener('submit', function(event) {
 
     render();
     localStorage.setItem('userKey', JSON.stringify(toDoData));
+    
 });
+render();
