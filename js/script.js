@@ -7,14 +7,11 @@ const todoList = document.querySelector('.todo-list');
 const todoRemove = document.querySelector('.todo-remove');
 const todoButtonAdd = document.querySelector('.header-button');
 
-let toDoData = localStorage.getItem('toDoData') ? JSON.parse(localStorage.getItem('toDoData')) : {
-    todoList: [],
-    todoCompleted: []
-};
+let toDoData = [];
 
-const updatelocal = function() {
-    localStorage.setItem('toDoData', JSON.stringify(toDoData));
-}
+if (localStorage.getItem('userKey')) {
+    toDoData = JSON.parse(localStorage.getItem('userKey'));}
+
 
 const render = function() {
 
@@ -50,7 +47,7 @@ const render = function() {
         });
 
     });
-    updatelocal();
+    localStorage.setItem('userKey', JSON.stringify(toDoData));
 };
 
 todoControl.addEventListener('submit', function(event) {
@@ -71,5 +68,5 @@ todoControl.addEventListener('submit', function(event) {
 
 
     render();
-    updatelocal();
+    localStorage.setItem('userKey', JSON.stringify(toDoData));
 });
